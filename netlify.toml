@@ -1,0 +1,15 @@
+[build]
+  command = "npm run build"
+  publish = "dist/client"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# SPA fallback: any path that doesn't match a prerendered/static file is
+# served the app shell so the client-side router can handle the route.
+# Static assets (e.g. /assets/*) are served directly and are unaffected,
+# because Netlify only applies this rewrite when no file matches.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
